@@ -41,3 +41,21 @@ function eg3() {
         console.log(data);
     })
 }
+
+function rightEg() {
+    var chunks = [];
+    var size = 0;
+    var fs = require('fs');
+    var iconv = require('iconv-lite');
+    var res = fs.createReadStream('test.md',{highWaterMark:11});
+    res.on('data',function (chunk) {
+        chunks.push(chunk);
+        size +=chunk.length;
+    });
+    res.on('end',function () {
+        var buf = Buffer.concat(chunks,size);
+        var str = iconv.decode(buf,'utf8');
+        console.log(str);
+    })
+}
+//rightEg();this example  need to install icon-lite module,you can install by npm install iconc-lite to solve this
