@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function getMes(){
+            var res = new XMLHttpRequest();
+            res.open('GET','http://127.0.0.1:6666',true);
+            res.onreadystatechange = function(){
+                if(this.readyState == 4 && this.state == 200){
+                    console.log(this.responeText)
+                }
+            }
+            res.send();
+        }
+    </script>
+</head>
+<body>
+    <button id="but" onclick="getMes()">get</button>
+</body>
+</html>
